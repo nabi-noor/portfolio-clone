@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi"
 
@@ -21,7 +22,7 @@ const Home = () => {
             </p>
             {/* btn and socials */}
             <div className="flex flex-col items-center gap-8 xl:flex-row">
-              <Button variant="outline" size="lg" className="flex items-center gap-2 uppercase">
+              <Button variant="outline" onClick={() => { window.open('/noor_nabi_resume.pdf') }} size="lg" className="flex items-center gap-2 uppercase">
                 <span>Download CV</span>
                 <FiDownload className="text-xl" />
               </Button>
