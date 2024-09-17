@@ -88,11 +88,11 @@ const education = {
     title: 'My education',
     description: "Qualified software developer with a background in Computer Science and a strong skill set in JavaScript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation.",
     items: [
-        {
-            institution: "University of Bradford",
-            degree: "M.S Computer Science",
-            duration: "2022 - 2024"
-        },
+        // {
+        //     institution: "University of Bradford",
+        //     degree: "M.S Computer Science",
+        //     duration: "2022 - 2024"
+        // },
         {
             institution: "Namal Institute, Mianwali",
             degree: "B.Sc Computer Science",
