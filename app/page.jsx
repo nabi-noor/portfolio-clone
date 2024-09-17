@@ -4,7 +4,7 @@ import { FiDownload } from "react-icons/fi"
 //components
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
-import Stats from "@/components/stats";
+import Stats from "@/components/Stats";
 const Home = () => {
   return (
     <section className="h-full">
@@ -14,7 +14,7 @@ const Home = () => {
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className="text-xl">Software Engineer</span>
             <h1 className="h1">
-              Hello I'm <br /> <span className="text-accent">Noor Nabi</span>
+              Hello I am <br /> <span className="text-accent">Noor Nabi</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               I am a megician who can bring your ideas to life P.S I also code.
