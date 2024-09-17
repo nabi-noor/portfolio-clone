@@ -18,10 +18,10 @@ const links = [
         name: 'resume',
         path: '/resume',
     },
-    {
-        name: 'work',
-        path: '/work',
-    },
+    // {
+    //     name: 'work',
+    //     path: '/work',
+    // },
     {
         name: 'contact',
         path: '/contact',
@@ -39,7 +39,7 @@ const MobileNav = () => {
                 {/* logo */}
                 <div className="mt-32 mb-40 text-2xl text-center">
                     <Link href="/">
-                        <h1 className='text-4xl font-semibold'>Luke<span className='text-accent'>.</span></h1>
+                        <h1 className='text-4xl font-semibold'>Noor<span className='text-accent'>.</span></h1>
                     </Link>
                 </div>
                 {/* nav */}
