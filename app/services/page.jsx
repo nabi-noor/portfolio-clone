@@ -7,26 +7,26 @@ import { Description } from "@radix-ui/react-dialog";
 const services = [
     {
         num: '01',
-        title: 'Web Development',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur',
+        title: 'Backend Development',
+        description: 'I can develop backend applications using JavaScript, TypeScript, Node.js, Fastify, Express and NestJS.',
         href: ""
     },
     {
         num: '02',
-        title: 'UI/UX Design',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur',
+        title: 'Frontend Development',
+        description: 'I can develop frontend applications using JavaScript, TypeScript, React, Angular and NextJS.',
         href: ""
     },
     {
         num: '03',
-        title: 'Logo Design',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur',
+        title: 'DevOps',
+        description: 'I can deploy and maintain applications using AWS, Docker, Kubernetes, and CloudFormation.',
         href: ""
     },
     {
         num: '04',
-        title: 'SEO',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur',
+        title: 'Database Engineering',
+        description: 'I can design and optimize databases using MySQL, MongoDB, and PostgreSQL.',
         href: ""
     },
 ];
@@ -46,9 +46,9 @@ const Services = () => {
                                 {/* top */}
                                 <div className="w-full flex justify-between items-center">
                                     <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">{service.num}</div>
-                                    <Link href={service.href} className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45">
+                                    {service.href !== '' && <Link href={service.href} className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45">
                                         <BsArrowDownRight className="text-primary text-3xl" />
-                                    </Link>
+                                    </Link>}
                                 </div>
                                 {/* title */}
                                 <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">{service.title}</h2>

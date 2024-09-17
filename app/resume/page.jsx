@@ -6,41 +6,46 @@ import {
     FaJs,
     FaReact,
     FaFigma,
-    FaNodeJs
+    FaNodeJs,
+    FaAws,
+    FaDatabase,
+    FaDocker
 } from 'react-icons/fa';
 
 import {
-    SiTailwindcss, SiNextdotjs
+    SiTailwindcss, SiNextdotjs,
+    SiKubernetes,
+    SiAwslambda
 } from 'react-icons/si';
 
 //about data
 const about = {
     title: 'About me',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.',
+    description: 'Experienced Software Engineer with a background in Computer Science and a strong skill set in JavaScript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation. Director of Finance volunteer experience exhibits leadership and financial acumen. Looking for a role as a Backend Developer focusing on Node.js to further lead to innovative projects.',
     info: [
         {
             fieldName: "Name",
-            fieldValue: "Luke Coleman"
-        },
-        {
-            fieldName: "Phone",
-            fieldValue: "(+40) 321 654 678"
-        },
-        {
-            fieldName: "Experience",
-            fieldValue: "12+ Years"
-        },
-        {
-            fieldName: "Skype",
-            fieldValue: "luke.01"
-        },
-        {
-            fieldName: "Nationality",
-            fieldValue: "American"
+            fieldValue: "Noor Nabi"
         },
         {
             fieldName: "Email",
-            fieldValue: "luke.01@gmail.com"
+            fieldValue: "panhwarnabinoor@gmail.com"
+        },
+        {
+            fieldName: "Phone",
+            fieldValue: "(+92) 336 0080 304"
+        },
+        {
+            fieldName: "Experience",
+            fieldValue: "5+ Years"
+        },
+        // {
+        //     fieldName: "Skype",
+        //     fieldValue: "luke.01"
+        // },
+        {
+            fieldName: "Nationality",
+            fieldValue: "Pakistani"
         },
         {
             fieldName: "Freelance",
@@ -48,7 +53,7 @@ const about = {
         },
         {
             fieldName: "Languages",
-            fieldValue: "English, Spanish"
+            fieldValue: "English"
         },
     ],
 };
@@ -57,37 +62,22 @@ const about = {
 const experience = {
     icon: '/assets/resume/badge.svg',
     title: 'My experience',
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+    description: "A seasoned software engineer with a background in Computer Science and a strong skill set in JavaScript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation.",
     items: [
         {
-            company: "Tech Solutions Inc.",
-            position: "Full-Stack Developer",
-            duration: "2022 - Present"
+            company: "WeUno Technologies.",
+            position: "NodeJS Developer",
+            duration: "Feb 2024 - Present"
         },
         {
-            company: "Web Design Studio",
-            position: "Front-End Developer Intern",
-            duration: "Summer 2021"
+            company: "Icommunix Pvt. Ltd.",
+            position: "Full Stack Developer",
+            duration: "May 2022 - Sep 2023"
         },
         {
-            company: "E-commerce Startup",
-            position: "Freelance Web Developer",
-            duration: "2020 - 2021"
-        },
-        {
-            company: "Tech Academy",
-            position: "Teaching Assistant",
-            duration: "2019 - 2020"
-        },
-        {
-            company: "Digital Agency",
-            position: "UI/UX Designer",
-            duration: "2018 - 2019"
-        },
-        {
-            company: "Software Development Firm",
-            position: "Junior Developer",
-            duration: "2017 - 2018"
+            company: "Jr. Software Developer",
+            position: "PHP Lift",
+            duration: "Jun 2020 - May 2022"
         },
     ],
 };
@@ -96,38 +86,19 @@ const experience = {
 const education = {
     icon: '/assets/resume/cap.svg',
     title: 'My education',
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+    description: "Qualified software developer with a background in Computer Science and a strong skill set in JavaScript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation.",
     items: [
         {
-            institution: "Online Course Platform",
-            degree: "Full-Stack Web Development Bootcamp",
-            duration: "2023"
+            institution: "University of Bradford",
+            degree: "M.S Computer Science",
+            duration: "2022 - 2024"
         },
         {
-            institution: "Codecademy",
-            degree: "Front-end Track",
-            duration: "2022"
+            institution: "Namal Institute, Mianwali",
+            degree: "B.Sc Computer Science",
+            duration: "2018 - 2022"
         },
-        {
-            institution: "Online Course",
-            degree: "Programming Course",
-            duration: "2020 - 2021"
-        },
-        {
-            institution: "Tech Institute",
-            degree: "Certified Web Developer",
-            duration: "2019"
-        },
-        {
-            institution: "Design School",
-            degree: "Diploma in Graphic Design",
-            duration: "2016 - 2018"
-        },
-        {
-            institution: "Community College",
-            degree: "Associate Degree in Computer Science",
-            duration: "2014 - 2016"
-        },
+        
     ],
 };
 
@@ -135,16 +106,8 @@ const education = {
 const skills = {
     icon: '/assets/resume/cap.svg',
     title: 'My skills',
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+    description: "Skilled in multiple technologies and infrastructures which may include Javascript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation.",
     skillList: [
-        {
-            icon: <FaHtml5 />,
-            name: "html 5"
-        },
-        {
-            icon: <FaCss3 />,
-            name: "css 3"
-        },
         {
             icon: <FaJs />,
             name: "javascript"
@@ -158,17 +121,29 @@ const skills = {
             name: "next.js"
         },
         {
-            icon: <SiTailwindcss />,
-            name: "tailwind.css"
+            icon: <FaAws />,
+            name: "Amazon Web Services"
         },
         {
             icon: <FaNodeJs />,
             name: "node.js"
         },
         {
-            icon: <FaFigma />,
-            name: "figma"
+            icon: <FaDatabase />,
+            name: "MySQL"
         },
+        {
+            icon: <FaDocker />,
+            name: "Docker"
+        },
+        {
+            icon: <SiKubernetes />,
+            name: "Kubernetes"
+        },
+        {
+            icon: <SiAwslambda />,
+            name: "Lambda"
+        }
     ],
 };
 
@@ -191,12 +166,12 @@ const Resume = () => {
             className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
         >
             <div className="container mx-auto">
-                <Tabs defaultValue='experience' className='flex flex-col xl:flex-row gap-[60px]'>
+                <Tabs defaultValue='about' className='flex flex-col xl:flex-row gap-[60px]'>
                     <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
+                        <TabsTrigger value="about">About me</TabsTrigger>
                         <TabsTrigger value="experience">Experience</TabsTrigger>
                         <TabsTrigger value="education">Education</TabsTrigger>
                         <TabsTrigger value="skills">Skills</TabsTrigger>
-                        <TabsTrigger value="about">About me</TabsTrigger>
                     </TabsList>
 
                     {/* content */}

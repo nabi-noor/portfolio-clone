@@ -3,10 +3,8 @@ import Link from "next/link";
 import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter } from "react-icons/fa";
 
 const socials = [
-    { icon: <FaGithub />, patn: "" },
-    { icon: <FaLinkedinIn />, patn: "" },
-    { icon: <FaYoutube />, patn: "" },
-    { icon: <FaTwitter />, patn: "" },
+    { icon: <FaGithub />, patn: "https://github.com/nabi-noor" },
+    { icon: <FaLinkedinIn />, patn: "https://www.linkedin.com/in/nabi-noor/" },
 ];
 
 const Social = ({ containerStyles, iconStyles }) => {
@@ -14,7 +12,7 @@ const Social = ({ containerStyles, iconStyles }) => {
         <div className={containerStyles}>
             {socials.map((item, index) => {
                 return (
-                    <Link key={index} href="item.path" className={iconStyles}>
+                    <Link key={index} href={item.patn} className={iconStyles}>
                         {item.icon}
                     </Link>
                 );

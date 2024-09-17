@@ -10,17 +10,17 @@ const info = [
     {
         icon: <FaPhoneAlt />,
         title: "Phone",
-        description: "(+40) 321 654 876",
+        description: "(+92) 336 0080 304",
     },
     {
         icon: <FaEnvelope />,
         title: "Email",
-        description: "youremail@gmail.com",
+        description: "panhwarnabinoor@gmail.com",
     },
     {
         icon: <FaMapMarkerAlt />,
         title: "Address",
-        description: "Code Corner, Tech Town 13579",
+        description: "Bahria Town, Karachi, Pakistan",
     },
 ]
 
@@ -38,10 +38,10 @@ const Contact = () => {
                             <p className="text-white/60">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum nihil sapiente pariatur id totam.</p>
                             {/* input */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Input type="firstname" placeholder="Firstname" />
-                                <Input type="lastname" placeholder="Lastname" />
+                                <Input type="firstname" placeholder="First name" />
+                                <Input type="lastname" placeholder="Last name" />
                                 <Input type="email" placeholder="Email Address" />
-                                <Input type="phone" placeholder="Phone " />
+                                <Input type="phone" placeholder="Phone" />
                             </div>
                             {/* select */}
                             <Select>
@@ -50,9 +50,12 @@ const Contact = () => {
                                     <SelectContent>
                                         <SelectGroup>
                                             <SelectLabel>Select a service</SelectLabel>
-                                            <SelectItem value="est">Web Development</SelectItem>
-                                            <SelectItem value="cst">UI/UX Design</SelectItem>
-                                            <SelectItem value="mst">Logo Design</SelectItem>
+                                            <SelectItem value="est">Backend Development</SelectItem>
+                                            <SelectItem value="cst">Frontend Development</SelectItem>
+                                            <SelectItem value="mst">Full Stack Development</SelectItem>
+                                            <SelectItem value="mst">DevOps</SelectItem>
+                                            <SelectItem value="mst">Database Engineering</SelectItem>
+
                                         </SelectGroup>
                                     </SelectContent>
                                 </SelectTrigger>
