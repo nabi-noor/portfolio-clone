@@ -1,27 +1,27 @@
 "use client";
 
 import {
-    FaHtml5,
-    FaCss3,
     FaJs,
     FaReact,
-    FaFigma,
     FaNodeJs,
     FaAws,
     FaDatabase,
-    FaDocker
+    FaDocker,
+    FaPython,
 } from 'react-icons/fa';
 
 import {
-    SiTailwindcss, SiNextdotjs,
+    SiNextdotjs,
     SiKubernetes,
-    SiAwslambda
+    SiAwslambda,
+    SiMicrosoftazure,
+    SiTerraform,
 } from 'react-icons/si';
 
 //about data
 const about = {
     title: 'About me',
-    description: 'Experienced Software Engineer with a background in Computer Science and a strong skill set in JavaScript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation. Director of Finance volunteer experience exhibits leadership and financial acumen. Looking for a role as a Backend Developer focusing on Node.js to further lead to innovative projects.',
+    description: 'Backend and cloud engineer blending platform leadership with sleeves-rolled-up delivery. I specialise in building resilient infrastructure, realtime data systems, and AI-powered automation for fintech, SaaS, and regulated industries. Every engagement focuses on clarity of outcomes, rock-solid operations, and enabling teams to move faster with confidence.',
     info: [
         {
             fieldName: "Name",
@@ -33,11 +33,11 @@ const about = {
         },
         {
             fieldName: "Phone",
-            fieldValue: "(+92) 336 0080 304"
+            fieldValue: "+13025561466"
         },
         {
             fieldName: "Experience",
-            fieldValue: "5+ Years"
+            fieldValue: "6+ Years"
         },
         // {
         //     fieldName: "Skype",
@@ -52,8 +52,8 @@ const about = {
             fieldValue: "Available"
         },
         {
-            fieldName: "Languages",
-            fieldValue: "English"
+            fieldName: "Timezone",
+            fieldValue: "UTC+5 (flexible worldwide)"
         },
     ],
 };
@@ -62,21 +62,31 @@ const about = {
 const experience = {
     icon: '/assets/resume/badge.svg',
     title: 'My experience',
-    description: "A seasoned software engineer with a background in Computer Science and a strong skill set in JavaScript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation.",
+    description: "Selected engagements across fintech, AI, and cloud compliance—leading architecture, hands-on build, and operational enablement.",
     items: [
         {
-            company: "WeUno Technologies.",
-            position: "NodeJS Developer",
-            duration: "Feb 2024 - Present"
+            company: "Rulrr",
+            position: "Cloud Engineer",
+            duration: "Jul 2025 - Present"
         },
         {
-            company: "Icommunix Pvt. Ltd.",
-            position: "Full Stack Developer",
-            duration: "May 2022 - Sep 2023"
+            company: "Odea Integrations",
+            position: "Backend Engineer",
+            duration: "Apr 2025 - Jun 2025"
         },
         {
-            company: "Jr. Software Developer",
-            position: "PHP Lift",
+            company: "WeUno Technologies",
+            position: "Backend Engineer",
+            duration: "Feb 2024 - Apr 2025"
+        },
+        {
+            company: "Icommunix",
+            position: "Software Engineer",
+            duration: "May 2022 - Feb 2024"
+        },
+        {
+            company: "PhpLift",
+            position: "Jr. Software Engineer",
             duration: "Jun 2020 - May 2022"
         },
     ],
@@ -86,7 +96,7 @@ const experience = {
 const education = {
     icon: '/assets/resume/cap.svg',
     title: 'My education',
-    description: "Qualified software developer with a background in Computer Science and a strong skill set in JavaScript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation.",
+    description: "Grounded in computer science fundamentals with a continuous learning path across cloud architecture, distributed systems, and platform strategy.",
     items: [
         // {
         //     institution: "University of Bradford",
@@ -95,7 +105,7 @@ const education = {
         // },
         {
             institution: "Namal Institute, Mianwali",
-            degree: "B.Sc Computer Science",
+            degree: "B.Sc Computer Science · Cloud & Distributed Systems Track",
             duration: "2018 - 2022"
         },
         
@@ -106,11 +116,15 @@ const education = {
 const skills = {
     icon: '/assets/resume/cap.svg',
     title: 'My skills',
-    description: "Skilled in multiple technologies and infrastructures which may include Javascript, TypeScript, Node.js, Angular, React, Python, AWS Lambdas, CloudFront, IAM, and CloudFormation.",
+    description: "Tooling I lean on to deliver production-ready infrastructure, APIs, data pipelines, and automation for regulated, high-growth products.",
     skillList: [
         {
             icon: <FaJs />,
             name: "javascript"
+        },
+        {
+            icon: <FaPython />,
+            name: "python"
         },
         {
             icon: <FaReact />,
@@ -125,12 +139,16 @@ const skills = {
             name: "Amazon Web Services"
         },
         {
+            icon: <SiMicrosoftazure />,
+            name: "Microsoft Azure"
+        },
+        {
             icon: <FaNodeJs />,
             name: "node.js"
         },
         {
             icon: <FaDatabase />,
-            name: "MySQL"
+            name: "PostgreSQL"
         },
         {
             icon: <FaDocker />,
@@ -143,6 +161,10 @@ const skills = {
         {
             icon: <SiAwslambda />,
             name: "Lambda"
+        },
+        {
+            icon: <SiTerraform />,
+            name: "Terraform"
         }
     ],
 };
@@ -156,16 +178,31 @@ import { motion } from 'framer-motion';
 
 const Resume = () => {
     return (
-        <motion.div initial={{ opacity: 0 }} animate={{
-            opacity: 1, transition: {
-                delay: 2.4,
-                duration: 0.4,
-                ease: 'easeIn'
-            }
-        }}
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+                opacity: 1,
+                transition: {
+                    delay: 0.3,
+                    duration: 0.5,
+                    ease: 'easeOut',
+                },
+            }}
             className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
         >
             <div className="container mx-auto">
+                <div className="mb-10 space-y-4 text-center xl:text-left">
+                    <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.3em] text-white/60">
+                        Profile & Credentials
+                    </span>
+                    <h1 className="text-4xl font-semibold text-white md:text-5xl">
+                        A platform engineer who pairs strategy with hands-on delivery.
+                    </h1>
+                    <p className="mx-auto max-w-3xl text-base text-white/70 xl:mx-0">
+                        From fintech trading desks to AI automation programs, I help teams navigate architecture decisions, execute build plans, and
+                        leave behind infrastructure that is observable, secure, and ready for the next milestone.
+                    </p>
+                </div>
                 <Tabs defaultValue='about' className='flex flex-col xl:flex-row gap-[60px]'>
                     <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
                         <TabsTrigger value="about">About me</TabsTrigger>
