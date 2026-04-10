@@ -42,10 +42,7 @@ export const metadata: Metadata = {
     description:
       "Backend and cloud engineer building serverless APIs, AWS infrastructure, and AI-powered systems.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -58,13 +55,7 @@ export default function RootLayout({
       lang="en"
       className={`${syne.variable} ${instrumentSans.variable} ${spaceMono.variable}`}
     >
-      <body>
-        {/* Noise texture overlay */}
-        <div className="noise-overlay" aria-hidden="true" />
-
-        {/* Main content */}
-        <div className="relative z-10">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

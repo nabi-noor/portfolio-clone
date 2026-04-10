@@ -1,100 +1,128 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: "up" | "left" | "right" | "scale";
 }
-
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.4, 0.25, 1],
-      delay,
-    },
-  }),
-};
 
 export default function AnimatedSection({
   children,
-  className,
+  className = "",
   delay = 0,
+  direction = "up",
 }: AnimatedSectionProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const from: gsap.TweenVars = { opacity: 0 };
+    if (direction === "up") from.y = 60;
+    else if (direction === "left") from.x = -60;
+    else if (direction === "right") from.x = 60;
+    else if (direction === "scale") from.scale = 0.92;
+
+    gsap.fromTo(el, from, {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      duration: 1,
+      delay,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        once: true,
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === el) t.kill();
+      });
+    };
+  }, [delay, direction]);
+
   return (
-    <motion.div
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      custom={delay}
-      className={className}
-    >
+    <div ref={ref} className={`gs-reveal ${className}`} style={{ opacity: 0 }}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
-// Staggered children container
+// Stagger children
 interface StaggerContainerProps {
   children: ReactNode;
   className?: string;
   staggerDelay?: number;
 }
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: (staggerDelay: number) => ({
-    transition: {
-      staggerChildren: staggerDelay,
-    },
-  }),
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
-  },
-};
-
 export function StaggerContainer({
   children,
-  className,
+  className = "",
   staggerDelay = 0.1,
 }: StaggerContainerProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const items = el.querySelectorAll(":scope > .stagger-item");
+
+    gsap.fromTo(
+      items,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: staggerDelay,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          once: true,
+        },
+      }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === el) t.kill();
+      });
+    };
+  }, [staggerDelay]);
+
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      custom={staggerDelay}
-      className={className}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
 export function StaggerItem({
   children,
-  className,
+  className = "",
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
-    <motion.div variants={itemVariants} className={className}>
+    <div className={`stagger-item ${className}`} style={{ opacity: 0 }}>
       {children}
-    </motion.div>
+    </div>
   );
 }

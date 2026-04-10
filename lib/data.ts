@@ -27,6 +27,17 @@ export interface DetailItem {
   value: string;
 }
 
+export interface StatItem {
+  value: number;
+  suffix: string;
+  label: string;
+}
+
+export interface FocusArea {
+  title: string;
+  description: string;
+}
+
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
@@ -46,8 +57,32 @@ export const aboutDetails: DetailItem[] = [
   { label: "Location", value: "Karachi, Pakistan" },
   { label: "Timezone", value: "UTC+5 (flexible)" },
   { label: "Experience", value: "4+ Years" },
-  { label: "Education", value: "B.Sc. Computer Science — UET (2018–2022)" },
   { label: "Status", value: "Available for remote work" },
+];
+
+export const stats: StatItem[] = [
+  { value: 75, suffix: "%", label: "Faster Deployments" },
+  { value: 25, suffix: "%", label: "Cloud Cost Reduction" },
+  { value: 99.95, suffix: "%", label: "Uptime Delivered" },
+  { value: 11, suffix: "+", label: "Production Platforms" },
+];
+
+export const focusAreas: FocusArea[] = [
+  {
+    title: "Platform Reliability",
+    description:
+      "Design SLOs, observability, and automated remediation for financial, health, and SaaS workloads that cannot fail.",
+  },
+  {
+    title: "Multi-Cloud Infrastructure",
+    description:
+      "Ship reusable landing zones, container platforms, and pipelines across AWS and Azure without slowing product teams.",
+  },
+  {
+    title: "Intelligent Automation",
+    description:
+      "Blend AI, event-driven workflows, and secure integrations so operations scale faster than headcount growth.",
+  },
 ];
 
 export const experience: ExperienceEntry[] = [

@@ -1,159 +1,157 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-const headlineWords = [
-  "I",
-  "build",
-  "backend",
-  "systems",
-  "and",
-  "cloud",
-  "infrastructure",
-  "that",
-  "teams",
-  "trust",
-  "in",
-  "production.",
-];
-
-const lineBreaks = new Set([3, 6]); // After "systems" and "infrastructure"
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function Hero() {
+  const tagRef = useRef<HTMLDivElement>(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+  const subRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const termRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ delay: 1.4 });
+
+    tl.fromTo(
+      tagRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
+    )
+      .fromTo(
+        h1Ref.current?.querySelectorAll(".word") ?? [],
+        { opacity: 0, y: 80 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.04, ease: "power3.out" },
+        "-=0.3"
+      )
+      .fromTo(
+        subRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+        "-=0.3"
+      )
+      .fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+        "-=0.3"
+      )
+      .fromTo(
+        termRef.current,
+        { opacity: 0, x: 40 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+        "-=0.5"
+      );
+  }, []);
+
+  const headline = "I build backend systems and cloud infrastructure that teams trust in production.";
+  const accentWords = new Set(["backend", "cloud", "infrastructure", "production."]);
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center hero-grid overflow-hidden"
+      className="relative min-h-[100svh] flex items-center overflow-hidden"
     >
-      {/* Gradient orb */}
-      <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Background gradient mesh */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[60%] h-[60%] bg-gradient-radial from-accent/[0.07] via-transparent to-transparent" />
+        <div className="absolute bottom-0 right-0 w-[50%] h-[50%] bg-gradient-radial from-accent-purple/[0.05] via-transparent to-transparent" />
+      </div>
 
-      <div className="max-w-content mx-auto px-6 w-full pt-24 pb-20">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
-          {/* Text content */}
+      <div className="max-w-content mx-auto px-5 sm:px-6 w-full pt-24 sm:pt-28 pb-16 sm:pb-20 relative z-10">
+        <div className="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-16 items-center">
+          {/* Text */}
           <div>
-            {/* Tagline */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="font-mono text-xs uppercase tracking-[0.25em] text-text-muted mb-6"
-            >
-              Cloud Engineer &middot; Backend Developer
-            </motion.p>
+            <div ref={tagRef} style={{ opacity: 0 }}>
+              <span className="inline-flex items-center rounded-full border border-border px-4 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] sm:tracking-[0.3em] text-text-muted">
+                Backend &middot; Cloud &middot; Platform
+              </span>
+            </div>
 
-            {/* Headline with staggered word reveal */}
-            <h1 className="font-syne font-extrabold text-4xl sm:text-5xl lg:text-[4rem] xl:text-[4.5rem] leading-[1.1] mb-8">
-              {headlineWords.map((word, i) => (
-                <span key={i} className="inline-block overflow-hidden">
-                  <motion.span
-                    className="inline-block"
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.4 + i * 0.05,
-                      ease: [0.25, 0.4, 0.25, 1],
-                    }}
+            <h1
+              ref={h1Ref}
+              className="font-syne font-extrabold text-[1.75rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1.1] mt-6 sm:mt-8 mb-6 sm:mb-8"
+            >
+              {headline.split(" ").map((word, i) => (
+                <span key={i} className="inline-block overflow-hidden mr-[0.25em] sm:mr-[0.3em]">
+                  <span
+                    className={`word inline-block ${
+                      accentWords.has(word) ? "gradient-text" : ""
+                    }`}
                   >
                     {word}
-                  </motion.span>
-                  {lineBreaks.has(i) ? (
-                    <>
-                      <br className="hidden sm:block" />{" "}
-                    </>
-                  ) : (
-                    " "
-                  )}
+                  </span>
                 </span>
               ))}
             </h1>
 
-            {/* Subtext */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.1 }}
-              className="text-text-muted text-lg max-w-xl mb-10"
+            <p
+              ref={subRef}
+              style={{ opacity: 0 }}
+              className="text-text-secondary text-sm sm:text-base lg:text-lg max-w-lg mb-8 sm:mb-10 leading-relaxed"
             >
               Node.js &middot; AWS &middot; Python &middot; Serverless —
               shipping reliable systems for 4+ years.
-            </motion.p>
+            </p>
 
-            {/* CTA buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.3 }}
-              className="flex flex-wrap gap-4"
-            >
+            <div ref={ctaRef} style={{ opacity: 0 }} className="flex flex-wrap gap-3 sm:gap-4">
               <a
                 href="#projects"
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .querySelector("#projects")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                  document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-bg font-syne font-semibold text-sm rounded-md hover:bg-accent/90 transition-colors"
+                className="btn-primary text-xs sm:text-sm"
               >
                 View My Work
-                <span aria-hidden="true">&darr;</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
               </a>
               <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .querySelector("#contact")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-border text-text-primary font-syne font-semibold text-sm rounded-md hover:border-text-muted transition-colors"
+                className="btn-outline text-xs sm:text-sm"
               >
                 Get In Touch
               </a>
-            </motion.div>
+            </div>
           </div>
 
-          {/* Terminal element */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            className="hidden lg:block w-[340px] terminal"
-          >
-            <div className="terminal-header">
-              <span className="terminal-dot bg-[#ff5f57]" />
-              <span className="terminal-dot bg-[#febc2e]" />
-              <span className="terminal-dot bg-[#28c840]" />
-              <span className="ml-3 text-xs text-text-muted">terminal</span>
-            </div>
-            <div className="p-4 space-y-2">
-              <div>
-                <span className="text-accent">$</span>{" "}
-                <span className="text-text-muted">
-                  aws lambda invoke --function-name api-prod
-                </span>
+          {/* Terminal */}
+          <div ref={termRef} style={{ opacity: 0 }} className="hidden lg:block">
+            <div className="glass-card rounded-2xl overflow-hidden border border-border">
+              <div className="flex items-center gap-2 px-5 py-3.5 border-b border-border">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="ml-3 text-[11px] font-mono text-text-muted">~/cloud-ops</span>
               </div>
-              <div className="text-text-primary">
-                {"{"} &quot;StatusCode&quot;: 200 {"}"}
-              </div>
-              <div className="mt-3">
-                <span className="text-accent">$</span>{" "}
-                <span className="text-text-muted">
-                  curl -s https://api.noornabi.pro/health
-                </span>
-              </div>
-              <div className="text-green-400">
-                {"{"} &quot;status&quot;: &quot;ok&quot;, &quot;uptime&quot;:
-                &quot;99.95%&quot; {"}"}
-              </div>
-              <div className="mt-1">
-                <span className="text-accent">$</span>{" "}
-                <span className="inline-block w-2 h-4 bg-text-primary animate-pulse" />
+              <div className="p-5 font-mono text-[13px] space-y-3">
+                <div>
+                  <span className="text-accent">$</span>{" "}
+                  <span className="text-text-secondary">aws lambda invoke --function-name api-prod</span>
+                </div>
+                <div className="text-text-primary pl-2">
+                  {"{"} &quot;StatusCode&quot;: <span className="text-accent">200</span> {"}"}
+                </div>
+                <div className="pt-2">
+                  <span className="text-accent">$</span>{" "}
+                  <span className="text-text-secondary">curl -s https://api.noornabi.pro/health</span>
+                </div>
+                <div className="text-[#28c840] pl-2">
+                  {"{"} &quot;status&quot;: &quot;ok&quot;, &quot;uptime&quot;: &quot;99.95%&quot; {"}"}
+                </div>
+                <div className="pt-2">
+                  <span className="text-accent">$</span>{" "}
+                  <span className="inline-block w-2 h-4 bg-accent animate-pulse" />
+                </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

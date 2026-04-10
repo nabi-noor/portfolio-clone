@@ -14,12 +14,25 @@ module.exports = {
     },
     extend: {
       colors: {
-        bg: "#0a0a0b",
-        surface: "#161618",
-        border: "#222222",
-        accent: "#3b82f6",
-        "text-primary": "#f5f5f5",
-        "text-muted": "#71717a",
+        bg: {
+          DEFAULT: "#1a1a1e",
+          deep: "#111114",
+          card: "#222228",
+          hover: "#2a2a30",
+        },
+        accent: {
+          DEFAULT: "#0693e3",
+          cyan: "#00d4ff",
+          purple: "#9b51e0",
+          orange: "#ff6900",
+        },
+        border: {
+          DEFAULT: "rgba(255,255,255,0.08)",
+          hover: "rgba(255,255,255,0.15)",
+        },
+        "text-primary": "#ffffff",
+        "text-secondary": "rgba(255,255,255,0.7)",
+        "text-muted": "rgba(255,255,255,0.35)",
       },
       fontFamily: {
         syne: ["var(--font-syne)", "sans-serif"],
@@ -27,7 +40,12 @@ module.exports = {
         mono: ["var(--font-space-mono)", "monospace"],
       },
       maxWidth: {
-        content: "1100px",
+        content: "1140px",
+      },
+      borderRadius: {
+        "2xl": "16px",
+        "3xl": "24px",
+        "4xl": "32px",
       },
     },
   },
