@@ -1,34 +1,27 @@
 import type { Metadata } from "next";
-import { Syne, Instrument_Sans, Space_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-syne",
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
   display: "swap",
 });
 
-const instrumentSans = Instrument_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-instrument",
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Noor Nabi — Cloud Engineer & Backend Developer",
+  title: "Noor Nabi — Cloud & Backend Engineer",
   description:
     "Backend and cloud engineer building serverless APIs, AWS infrastructure, and AI-powered systems. Available for remote work.",
   openGraph: {
-    title: "Noor Nabi — Cloud Engineer & Backend Developer",
+    title: "Noor Nabi — Cloud & Backend Engineer",
     description:
       "Backend and cloud engineer building serverless APIs, AWS infrastructure, and AI-powered systems. Available for remote work.",
     url: "https://noornabi.pro",
@@ -38,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Noor Nabi — Cloud Engineer & Backend Developer",
+    title: "Noor Nabi — Cloud & Backend Engineer",
     description:
       "Backend and cloud engineer building serverless APIs, AWS infrastructure, and AI-powered systems.",
   },
@@ -51,10 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${syne.variable} ${instrumentSans.variable} ${spaceMono.variable}`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );
